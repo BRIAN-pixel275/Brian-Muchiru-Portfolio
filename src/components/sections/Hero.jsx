@@ -1,159 +1,148 @@
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaArrowDown } from "react-icons/fa";
 import { TypeAnimation } from "react-type-animation";
+import { FaArrowDown } from "react-icons/fa";
 
+import Container from "../layout/Container";
 import Button from "../ui/Button";
 import ProfileCard from "../ui/ProfileCard";
 import FloatingBadge from "../ui/FloatingBadge";
-import Counter from "../ui/Counter";
+import StatCard from "../ui/StatCard";
 
 const Hero = () => {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center overflow-hidden px-6 pt-28 lg:px-20"
+      className="relative flex min-h-screen items-center overflow-hidden pt-28"
     >
-      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-20 lg:grid-cols-2">
+      <Container>
+        <div className="grid items-center gap-20 lg:grid-cols-2">
+          {/* ================= LEFT ================= */}
 
-        {/* ================= LEFT SIDE ================= */}
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            {/* Available Badge */}
 
-        <motion.div
-          initial={{ opacity: 0, x: -60 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <p className="font-medium text-blue-400">
-             Hello, I'm
-          </p>
+            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-5 py-2 backdrop-blur-xl">
+              <span className="h-2 w-2 rounded-full bg-emerald-400"></span>
 
-          <h1 className="mt-4 text-5xl font-black leading-tight md:text-6xl lg:text-7xl">
-            Building
-            <span className="block bg-gradient-to-r from-blue-400 to-violet-500 bg-clip-text text-transparent">
-              Digital
-            </span>
-            Experiences
-          </h1>
+              <span className="text-sm text-emerald-300">
+                Available for Work
+              </span>
+            </div>
 
-          <h2 className="mt-8 text-3xl font-bold">
-            Brian Muchiru
-          </h2>
+            {/* Heading */}
 
-          <TypeAnimation
-            sequence={[
-              "Software Developer",
-              2000,
-              "Frontend Developer",
-              2000,
-              "React Developer",
-              2000,
-              "Java Developer",
-              2000,
-            ]}
-            wrapper="h3"
-            speed={50}
-            repeat={Infinity}
-            className="mt-4 text-2xl font-semibold text-blue-400"
-          />
+            <h1 className="mt-8 text-6xl font-black leading-none lg:text-7xl">
+              Building
+              <br />
 
-          <p className="mt-8 max-w-xl text-lg leading-9 text-slate-400">
-            I build modern, responsive and scalable web applications
-            with React, Tailwind CSS, JavaScript and Java while
-            creating clean user experiences that solve real-world
-            problems.
-          </p>
+              <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-violet-500 bg-clip-text text-transparent">
+                Digital
+              </span>
 
-          {/* Buttons */}
+              <br />
 
-          <div className="mt-10 flex flex-wrap gap-5">
-            <Button>
-              View Projects
-            </Button>
+              Experiences
+              <br />
 
-            <Button primary={false}>
-              Download Resume
-            </Button>
-          </div>
+              That Matter.
+            </h1>
 
-          {/* Statistics */}
+            {/* Typing */}
 
-          <div className="mt-14 flex flex-wrap gap-10">
-            <Counter end={10} label="Projects" />
-            <Counter end={15} label="Technologies" />
-            <Counter end={3} label="Years Learning" />
-          </div>
+            <TypeAnimation
+              sequence={[
+                "Frontend Developer",
+                2000,
+                "React Developer",
+                2000,
+                "Java Developer",
+                2000,
+                "UI Enthusiast",
+                2000,
+              ]}
+              speed={50}
+              repeat={Infinity}
+              className="mt-8 block text-2xl font-semibold text-blue-400"
+            />
 
-          {/* Social Links */}
+            {/* Description */}
 
-          <div className="mt-14 flex gap-5">
+            <p className="mt-8 max-w-xl text-lg leading-8 text-slate-400">
+              I build fast, responsive and modern web applications using React,
+              Tailwind CSS, JavaScript and Java, focusing on clean design and
+              great user experiences.
+            </p>
 
-            <a
-              href="https://github.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border border-white/10 bg-white/5 p-4 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-blue-400 hover:bg-blue-500"
-            >
-              <FaGithub size={22} />
-            </a>
+            {/* Buttons */}
 
-            <a
-              href="https://linkedin.com/in/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border border-white/10 bg-white/5 p-4 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-blue-400 hover:bg-blue-500"
-            >
-              <FaLinkedin size={22} />
-            </a>
+            <div className="mt-10 flex flex-wrap gap-5">
+              <Button>View Projects</Button>
 
-          </div>
-        </motion.div>
+              <Button primary={false}>Download Resume</Button>
+            </div>
 
-        {/* ================= RIGHT SIDE ================= */}
+            {/* Stats */}
 
-        <motion.div
-          initial={{ opacity: 0, x: 60 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-          className="relative flex justify-center"
-        >
-          <ProfileCard />
+            <div className="mt-14 flex flex-wrap gap-5">
+              <StatCard value="10+" label="Projects" />
 
-          <FloatingBadge
-            title="React"
-            className="-left-4 top-20"
-          />
+              <StatCard value="15+" label="Technologies" />
 
-          <FloatingBadge
-            title="Tailwind CSS"
-            className="-left-10 bottom-24"
-          />
+              <StatCard value="3+" label="Years Learning" />
+            </div>
+          </motion.div>
 
-          <FloatingBadge
-            title="JavaScript"
-            className="left-20 -top-5"
-          />
+          {/* ================= RIGHT ================= */}
 
-          <FloatingBadge
-            title="Java"
-            className="-right-4 top-36"
-          />
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+            className="relative flex justify-center"
+          >
+            <ProfileCard />
 
-          <FloatingBadge
-            title="Git"
-            className="right-8 bottom-20"
-          />
+            <FloatingBadge
+              title="⚛ React"
+              className="-top-6 right-12"
+            />
 
-          <FloatingBadge
-            title="GitHub"
-            className="right-20 -bottom-3"
-          />
-        </motion.div>
+            <FloatingBadge
+              title=" JavaScript"
+              className="-left-6 top-24"
+            />
 
-      </div>
+            <FloatingBadge
+              title=" Tailwind"
+              className="-left-10 bottom-24"
+            />
+
+            <FloatingBadge
+              title=" Java"
+              className="right-4 bottom-8"
+            />
+
+            <FloatingBadge
+              title=" GitHub"
+              className="left-8 -bottom-8"
+            />
+
+            <FloatingBadge
+              title="🌿 Git"
+              className="right-0 top-60"
+            />
+          </motion.div>
+        </div>
+      </Container>
 
       {/* Scroll Indicator */}
 
       <motion.div
-        animate={{ y: [0, 10, 0] }}
+        animate={{ y: [0, 12, 0] }}
         transition={{
           duration: 1.6,
           repeat: Infinity,
@@ -161,16 +150,13 @@ const Hero = () => {
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <div className="flex flex-col items-center gap-3 text-slate-400">
-
-          <span className="text-sm">
+          <span className="text-sm tracking-widest uppercase">
             Scroll
           </span>
 
           <FaArrowDown />
-
         </div>
       </motion.div>
-
     </section>
   );
 };

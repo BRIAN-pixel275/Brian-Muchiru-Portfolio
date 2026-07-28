@@ -4,26 +4,13 @@ const FloatingBadge = ({ title, className }) => {
   return (
     <motion.div
       animate={{
-        y: [0, -12, 0],
-        rotate: [-1, 1, -1],
+        y: [0, -10, 0],
       }}
       transition={{
-        duration: 5,
+        duration: 3,
         repeat: Infinity,
-        ease: "easeInOut",
       }}
-      className={`
-        absolute
-        rounded-full
-        border
-        border-white/10
-        bg-white/[0.07]
-        px-5
-        py-3
-        backdrop-blur-2xl
-        shadow-xl
-        ${className}
-      `}
+      className={`absolute rounded-full border border-white/10 bg-white/10 px-5 py-3 backdrop-blur-2xl ${className}`}
     >
       {title}
     </motion.div>
