@@ -80,9 +80,13 @@ const Hero = () => {
             {/* Buttons */}
 
             <div className="mt-10 flex flex-wrap gap-5">
-              <Button>View Projects</Button>
+              <Button link href="#Projects">
+                View Projects
+              </Button>
 
-              <Button primary={false}>Download Resume</Button>
+              <Button primary={false} link href="/resume.pdf" target="_blank">
+                Download Resume
+              </Button>
             </div>
 
             {/* Stats */}
