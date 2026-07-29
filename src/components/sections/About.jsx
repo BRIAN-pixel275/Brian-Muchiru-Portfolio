@@ -44,7 +44,7 @@ const About = () => {
               What I Love
             </h3>
 
-            <ul className="mt-6 space-y-5 text-slate-400">
+            <ol className="mt-6 space-y-5 text-slate-400">
 
               <li> Building responsive web applications</li>
 
@@ -56,7 +56,7 @@ const About = () => {
 
               <li> Solving real-world problems</li>
 
-            </ul>
+            </ol>
 
           </GlassCard>
 
