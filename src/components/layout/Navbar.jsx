@@ -1,164 +1,191 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
+
+const navLinks = [
+  { name: "Home", href: "#home" },
+  { name: "About", href: "#about" },
+  { name: "Skills", href: "#skills" },
+  { name: "Experience", href: "#experience" },
+  { name: "Projects", href: "#projects" },
+  { name: "Contact", href: "#contact" },
+];
 
 const Navbar = () => {
+  const [activeSection, setActiveSection] = useState("home");
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  const links = [
-    {
-      name: "Home",
-      href: "#home",
-    },
-    {
-      name: "About",
-      href: "#about",
-    },
-    {
-      name: "Skills",
-      href: "#skills",
-    },
-    {
-      name: "Experience",
-      href: "#experience",
-    },
-    {
-      name: "Projects",
-      href: "#projects",
-    },
-    {
-      name: "Contact",
-      href: "#contact",
-    },
-  ];
+  // Detect current section
+  useEffect(() => {
+    const sections = document.querySelectorAll("section");
 
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        threshold: 0.5,
+      }
+    );
 
-  const scrollToSection = (href) => {
-    const section = document.querySelector(href);
+    sections.forEach((section) => observer.observe(section));
 
-    if(section){
-      section.scrollIntoView({
-        behavior:"smooth",
-      });
-    }
-  };
+    return () => observer.disconnect();
+  }, []);
 
+  // Detect scrolling
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () =>
+      window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <motion.nav
-      initial={{
-        y:-100,
-        opacity:0
-      }}
+    <header className="fixed top-5 left-0 right-0 z-50 flex justify-center px-4">
 
-      animate={{
-        y:0,
-        opacity:1
-      }}
-
-      transition={{
-        duration:0.8
-      }}
-
-      className="
-      fixed
-      top-6
-      left-1/2
-      z-50
-      w-[90%]
-      max-w-7xl
-      -translate-x-1/2
-      rounded-full
-      border
-      border-white/10
-      bg-white/5
-      px-8
-      py-4
-      backdrop-blur-xl
-      "
-    >
-
-      <div className="flex items-center justify-between">
-
-
-        {/* Logo */}
-
-        <button
-          onClick={() => scrollToSection("#home")}
-          className="
-          text-2xl
-          font-bold
-          text-white
-          "
-        >
-          <span className="text-blue-400">
-            B
-          </span>
-          M
-        </button>
-
-
-        {/* Links */}
-
-        <div className="
-        hidden
-        items-center
-        gap-10
-        md:flex
-        ">
-
-          {
-            links.map((link)=>(
-              <button
-                key={link.name}
-                onClick={() =>
-                  scrollToSection(link.href)
-                }
-
-                className="
-                text-sm
-                font-medium
-                text-slate-300
-                transition
-                hover:text-white
-                "
-              >
-                {link.name}
-
-              </button>
-            ))
+      <motion.nav
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        className={`
+          w-full
+          max-w-7xl
+          rounded-full
+          border
+          border-white/10
+          backdrop-blur-xl
+          transition-all
+          duration-300
+          ${
+            scrolled
+              ? "bg-slate-900/90 shadow-2xl py-3"
+              : "bg-slate-900/70 py-4"
           }
+        `}
+      >
+        <div className="flex items-center justify-between px-8">
+
+          {/* Logo */}
+
+          <a
+            href="#home"
+            className="text-3xl font-black tracking-tight"
+          >
+            <span className="text-blue-500">B</span>M
+          </a>
+
+          {/* Desktop Menu */}
+
+          <ul className="hidden items-center gap-10 lg:flex">
+
+            {navLinks.map((link) => {
+              const isActive =
+                activeSection === link.href.replace("#", "");
+
+              return (
+                <li key={link.name}>
+
+                  <a
+                    href={link.href}
+                    className={`relative font-medium transition-colors duration-300 ${
+                      isActive
+                        ? "text-white"
+                        : "text-slate-400 hover:text-white"
+                    }`}
+                  >
+                    {link.name}
+
+                    {isActive && (
+                      <motion.div
+                        layoutId="navbar-indicator"
+                        className="absolute -bottom-2 left-0 right-0 mx-auto h-[3px] w-8 rounded-full bg-blue-500"
+                      />
+                    )}
+                  </a>
+
+                </li>
+              );
+            })}
+
+          </ul>
+
+          {/* Resume Button */}
+
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-7 py-3 font-semibold text-white transition hover:scale-105 lg:block"
+          >
+            Resume
+          </a>
+
+          {/* Mobile Button */}
+
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="lg:hidden"
+          >
+            {mobileOpen ? (
+              <X size={28} />
+            ) : (
+              <Menu size={28} />
+            )}
+          </button>
 
         </div>
 
+        {/* Mobile Menu */}
 
+        {mobileOpen && (
 
-        {/* Resume */}
+          <motion.div
+            initial={{ opacity: 0, y: -15 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-6 rounded-3xl border-t border-white/10 bg-slate-900/95 p-6 lg:hidden"
+          >
+            <ul className="space-y-5">
 
-        <a
-          href="/resume.pdf"
-          target="_blank"
-          className="
-          rounded-full
-          bg-gradient-to-r
-          from-blue-500
-          to-violet-500
-          px-6
-          py-3
-          font-semibold
-          text-white
-          transition
-          hover:scale-105
-          "
-        >
+              {navLinks.map((link) => (
 
-          Resume
+                <li key={link.name}>
 
-        </a>
+                  <a
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className={`block text-lg ${
+                      activeSection ===
+                      link.href.replace("#", "")
+                        ? "text-blue-400"
+                        : "text-slate-300"
+                    }`}
+                  >
+                    {link.name}
+                  </a>
 
+                </li>
 
-      </div>
+              ))}
 
-    </motion.nav>
+            </ul>
+          </motion.div>
+
+        )}
+
+      </motion.nav>
+
+    </header>
   );
 };
-
 
 export default Navbar;

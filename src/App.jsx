@@ -11,10 +11,12 @@ import Experience from "./components/sections/Experience";
 import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
 import BackToTop from "./components/layout/BackToTop";
+import CustomCursor from "./components/layout/CustomCursor";
 
 function App() {
   return (
     <>
+       <CustomCursor/>
       <Background />
       <Navbar />
       <ScrollProgress />
