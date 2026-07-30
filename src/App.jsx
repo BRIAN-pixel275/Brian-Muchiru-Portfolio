@@ -12,11 +12,31 @@ import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
 import BackToTop from "./components/layout/BackToTop";
 import CustomCursor from "./components/layout/CustomCursor";
+import { useEffect, useState } from "react";
+import { AnimatePresence } from "framer-motion";
+
+import LoadingScreen from "./components/layout/LoadingScreen";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1800);
+
+    return () => clearTimeout(timer);
+  }, []);
+     useEffect(() => {
+     document.body.style.overflow = loading ? "hidden" : "auto";
+    }, [loading]);
+
   return (
     <>
-       <CustomCursor/>
+    <AnimatePresence>
+      {loading && <LoadingScreen />}
+      </AnimatePresence>
+      <CustomCursor/>
       <Background />
       <Navbar />
       <ScrollProgress />
