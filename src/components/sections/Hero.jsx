@@ -80,13 +80,23 @@ const Hero = () => {
             {/* Buttons */}
 
             <div className="mt-10 flex flex-wrap gap-5">
-              <Button link href="#Projects">
-                View Projects
-              </Button>
+              <a
+               href="#projects"
+                className="mt-10 flex flex-wrap gap-5 rounded-full border border-white/10 bg-white/5 px-6 py-3 font-semibold transition duration-300 hover:border-blue-400 hover:bg-white/10"
+                     >
+              View Projects
+                 </a>
 
-              <Button primary={false} link href="/resume.pdf" target="_blank">
-                Download Resume
-              </Button>
+             <a
+
+                 href="/resume.pdf"
+                target="_blank"
+                 rel="noopener noreferrer"
+                 download
+                 className="mt-10 flex flex-wrap gap-5 rounded-full border border-white/10 bg-white/5 px-6 py-3 font-semibold transition duration-300 hover:border-blue-400 hover:bg-white/10"
+                      >
+                      Download Resume
+              </a>
             </div>
 
             {/* Stats */}
