@@ -27,7 +27,7 @@ const TimelineCard = ({ item, isLast }) => {
           {item.year}
         </p>
 
-        <h3 className="mt-2 text-2xl font-bold">
+        <h3 className="mt-2 text-2xl font-bold text-white">
           {item.title}
         </h3>
 
