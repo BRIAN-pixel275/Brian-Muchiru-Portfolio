@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -17,21 +17,37 @@ const Footer = () => {
 
         </div>
 
-        <div className="flex gap-6 text-2xl">
+         <div className="flex items-center gap-6 text-slate-400">
+  <a
+    href="https://github.com/BRIAN-pixel275"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="GitHub"
+    className="transition-colors duration-300 hover:text-blue-400"
+  >
+    <FaGithub size={26} />
+  </a>
 
-          <a href="#https://github.com/BRIAN-pixel275">
-            <FaGithub />
-          </a>
+  <a
+    href="https://www.instagram.com/just_muchiru/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Instagram"
+    className="transition-colors duration-300 hover:text-pink-500"
+  >
+    <FaInstagram size={26} />
+  </a>
 
-          <a href="#https://www.linkedin.com/in/brian-muchiru-b0b057356/">
-            <FaLinkedin />
-          </a>
-
-          <a href="brayo2933@gmail.com">
-            <FaEnvelope />
-          </a>
-
-        </div>
+  <a
+    href="https://www.linkedin.com/in/brian-muchiru-b0b057356/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="LinkedIn"
+    className="transition-colors duration-300 hover:text-blue-500"
+  >
+    <FaLinkedinIn size={26} />
+  </a>
+</div>
 
       </div>
 
