@@ -19,15 +19,15 @@ const Footer = () => {
 
         <div className="flex gap-6 text-2xl">
 
-          <a href="#">
+          <a href="#https://github.com/BRIAN-pixel275">
             <FaGithub />
           </a>
 
-          <a href="#">
+          <a href="#https://www.linkedin.com/in/brian-muchiru-b0b057356/">
             <FaLinkedin />
           </a>
 
-          <a href="mailto:you@example.com">
+          <a href="brayo2933@gmail.com">
             <FaEnvelope />
           </a>
 
