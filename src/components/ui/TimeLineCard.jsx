@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import GlassCard from "./GlassCard";
 
-const TimelineCard = ({ item, isLast }) => {
+const TimeLineCard = ({ item, isLast }) => {
   return (
     <motion.div
       initial={{ opacity: 0, x: -40 }}
@@ -39,4 +39,4 @@ const TimelineCard = ({ item, isLast }) => {
   );
 };
 
-export default TimelineCard;
+export default TimeLineCard;

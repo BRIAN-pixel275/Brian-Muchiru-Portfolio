@@ -11,7 +11,6 @@ import Experience from "./components/sections/Experience";
 import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
 import BackToTop from "./components/layout/BackToTop";
-import CustomCursor from "./components/layout/CustomCursor";
 import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
