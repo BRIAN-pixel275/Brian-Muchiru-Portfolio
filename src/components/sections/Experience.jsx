@@ -1,6 +1,6 @@
 import Container from "../layout/Container";
 import SectionHeading from "../ui/SectionHeading";
-import TimelineCard from "../ui/TimelineCard";
+import TimeLineCard from "../ui/TimeLineCard";
 
 import { experience } from "../../data/experience";
 
