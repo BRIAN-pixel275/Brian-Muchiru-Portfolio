@@ -8,7 +8,6 @@ const SkillCard = ({ skill }) => {
     <motion.div
       whileHover={{
         y: -8,
-        scale: 1.02,
       }}
       transition={{ duration: 0.25 }}
     >
@@ -16,14 +15,14 @@ const SkillCard = ({ skill }) => {
 
         <div className="flex items-center gap-4">
 
-          <Icon className="text-3xl text-blue-400" />
+          <Icon className="text-3xl text-brass" />
 
           <div>
-            <h3 className="font-semibold text-lg">
+            <h3 className="font-semibold text-lg text-paper">
               {skill.name}
             </h3>
 
-            <p className="text-sm text-slate-400">
+            <p className="font-mono-ledger text-sm text-paper-muted">
               {skill.category}
             </p>
           </div>
@@ -32,7 +31,7 @@ const SkillCard = ({ skill }) => {
 
         <div className="mt-6">
 
-          <div className="mb-2 flex justify-between text-sm">
+          <div className="mb-2 flex justify-between font-mono-ledger text-sm text-paper-muted">
 
             <span>Proficiency</span>
 
@@ -40,7 +39,7 @@ const SkillCard = ({ skill }) => {
 
           </div>
 
-          <div className="h-2 rounded-full bg-white/10">
+          <div className="h-1 bg-ink-line">
 
             <motion.div
               initial={{ width: 0 }}
@@ -49,7 +48,7 @@ const SkillCard = ({ skill }) => {
               }}
               viewport={{ once: true }}
               transition={{ duration: 1 }}
-              className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-violet-500"
+              className="h-1 bg-brass"
             />
 
           </div>

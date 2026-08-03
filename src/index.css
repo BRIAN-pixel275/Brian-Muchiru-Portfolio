@@ -1,6 +1,21 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
 
 @import "tailwindcss";
+
+@theme {
+  --color-ink: #0b0d0a;
+  --color-ink-raised: #16140f;
+  --color-ink-line: #262218;
+  --color-paper: #ede8de;
+  --color-paper-muted: #9c9484;
+  --color-brass: #c8963e;
+  --color-brass-deep: #96702c;
+  --color-moss: #7c9473;
+
+  --font-display: "Newsreader", serif;
+  --font-sans: "Inter", sans-serif;
+  --font-mono-ledger: "IBM Plex Mono", ui-monospace, monospace;
+}
 
 html {
   scroll-behavior: smooth;
@@ -8,8 +23,8 @@ html {
 
 body {
   font-family: "Inter", sans-serif;
-  background: #030712;
-  color: white;
+  background: var(--color-ink);
+  color: var(--color-paper);
 }
 
 * {
@@ -17,6 +32,21 @@ body {
 }
 
 ::selection {
-  background: #3b82f6;
-  color: white;
+  background: var(--color-brass);
+  color: var(--color-ink);
+}
+
+/* thin warm scrollbar to match the ledger tone instead of default gray/blue */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ink);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-ink-line);
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brass-deep);
 }

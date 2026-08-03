@@ -35,15 +35,15 @@ const ProjectCard = ({ project, reverse }) => {
           {/* ================= CONTENT ================= */}
 
           <div>
-            <span className="inline-flex rounded-full bg-blue-500/10 px-4 py-2 text-sm font-medium text-blue-400">
+            <span className="inline-flex border-b-2 border-brass pb-1 font-mono-ledger text-xs uppercase tracking-[3px] text-brass">
               Featured Project
             </span>
 
-            <h2 className="mt-6 text-4xl font-bold">
+            <h2 className="mt-6 font-display text-4xl font-semibold text-paper">
               {project.title}
             </h2>
 
-            <p className="mt-6 leading-8 text-slate-400">
+            <p className="mt-6 leading-8 text-paper-muted">
               {project.description}
             </p>
 
@@ -53,7 +53,7 @@ const ProjectCard = ({ project, reverse }) => {
               {project.tech.map((tech) => (
                 <span
                   key={tech}
-                  className="rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-sm font-medium text-blue-300 transition hover:border-blue-400 hover:bg-blue-500/20"
+                  className="rounded-sm border border-ink-line px-4 py-2 font-mono-ledger text-sm text-paper-muted transition hover:border-brass hover:text-brass"
                 >
                   {tech}
                 </span>
@@ -67,7 +67,7 @@ const ProjectCard = ({ project, reverse }) => {
                 href={project.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-violet-500 px-6 py-3 font-semibold transition duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/30"
+                className="flex items-center gap-2 rounded-sm bg-brass px-6 py-3 font-semibold text-ink transition duration-300 hover:bg-brass-deep"
               >
                 <FaExternalLinkAlt />
 
@@ -78,7 +78,7 @@ const ProjectCard = ({ project, reverse }) => {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3 font-semibold transition duration-300 hover:border-blue-400 hover:bg-white/10"
+                className="flex items-center gap-2 rounded-sm border border-ink-line px-6 py-3 font-semibold text-paper transition duration-300 hover:border-brass hover:text-brass"
               >
                 <FaGithub />
 

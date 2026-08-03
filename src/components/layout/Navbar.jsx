@@ -60,16 +60,15 @@ const Navbar = () => {
         className={`
           w-full
           max-w-7xl
-          rounded-full
+          rounded-sm
           border
-          border-white/10
-          backdrop-blur-xl
+          border-ink-line
           transition-all
           duration-300
           ${
             scrolled
-              ? "bg-slate-900/90 shadow-2xl py-3"
-              : "bg-slate-900/70 py-4"
+              ? "bg-ink-raised/95 shadow-2xl py-3"
+              : "bg-ink-raised/80 py-4"
           }
         `}
       >
@@ -79,9 +78,9 @@ const Navbar = () => {
 
           <a
             href="#home"
-            className="text-3xl font-black tracking-tight"
+            className="font-display text-3xl font-semibold tracking-tight text-paper"
           >
-            <span className="text-blue-500">B</span>M
+            <span className="text-brass">B</span>M
           </a>
 
           {/* Desktop Menu */}
@@ -97,10 +96,10 @@ const Navbar = () => {
 
                   <a
                     href={link.href}
-                    className={`relative font-medium transition-colors duration-300 ${
+                    className={`relative font-mono-ledger text-sm uppercase tracking-wide transition-colors duration-300 ${
                       isActive
-                        ? "text-white"
-                        : "text-slate-400 hover:text-white"
+                        ? "text-brass"
+                        : "text-paper-muted hover:text-paper"
                     }`}
                   >
                     {link.name}
@@ -108,7 +107,7 @@ const Navbar = () => {
                     {isActive && (
                       <motion.div
                         layoutId="navbar-indicator"
-                        className="absolute -bottom-2 left-0 right-0 mx-auto h-[3px] w-8 rounded-full bg-blue-500"
+                        className="absolute -bottom-2 left-0 right-0 mx-auto h-[2px] w-full bg-brass"
                       />
                     )}
                   </a>
@@ -125,7 +124,7 @@ const Navbar = () => {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-7 py-3 font-semibold text-white transition hover:scale-105 lg:block"
+            className="hidden rounded-sm bg-brass px-7 py-3 font-semibold text-ink transition hover:bg-brass-deep lg:block"
           >
             Resume
           </a>
@@ -134,7 +133,7 @@ const Navbar = () => {
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden"
+            className="text-paper lg:hidden"
           >
             {mobileOpen ? (
               <X size={28} />
@@ -152,7 +151,7 @@ const Navbar = () => {
           <motion.div
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-6 rounded-3xl border-t border-white/10 bg-slate-900/95 p-6 lg:hidden"
+            className="mt-6 border-t border-ink-line bg-ink-raised p-6 lg:hidden"
           >
             <ul className="space-y-5">
 
@@ -163,11 +162,11 @@ const Navbar = () => {
                   <a
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className={`block text-lg ${
+                    className={`block font-mono-ledger text-lg uppercase tracking-wide ${
                       activeSection ===
                       link.href.replace("#", "")
-                        ? "text-blue-400"
-                        : "text-slate-300"
+                        ? "text-brass"
+                        : "text-paper-muted"
                     }`}
                   >
                     {link.name}

@@ -1,0 +1,1057 @@
+diff --git a/index.html b/index.html
+index f451337..ce06bad 100644
+--- a/index.html
++++ b/index.html
+@@ -23,7 +23,7 @@
+     />
+ 
+     <link
+-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
++      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+       rel="stylesheet"
+     />
+ 
+diff --git a/src/App.jsx b/src/App.jsx
+index 84a5043..65dc04e 100644
+--- a/src/App.jsx
++++ b/src/App.jsx
+@@ -1,5 +1,4 @@
+ import Background from "./components/layout/Background";
+-<ScrollProgress />
+ import Navbar from "./components/layout/Navbar";
+ import Footer from "./components/layout/Footer";
+ import ScrollProgress from "./components/layout/ScrollProgress";
+diff --git a/src/components/layout/BackToTop.jsx b/src/components/layout/BackToTop.jsx
+index 6148404..813f722 100644
+--- a/src/components/layout/BackToTop.jsx
++++ b/src/components/layout/BackToTop.jsx
+@@ -21,14 +21,14 @@ const BackToTop = () => {
+           initial={{ opacity: 0, y: 30 }}
+           animate={{ opacity: 1, y: 0 }}
+           exit={{ opacity: 0, y: 30 }}
+-          whileHover={{ scale: 1.1 }}
++          whileHover={{ scale: 1.05 }}
+           onClick={() =>
+             window.scrollTo({
+               top: 0,
+               behavior: "smooth",
+             })
+           }
+-          className="fixed bottom-8 right-8 z-50 rounded-full bg-blue-600 p-4 text-white shadow-xl"
++          className="fixed bottom-8 right-8 z-50 rounded-sm border border-brass bg-ink-raised p-4 text-brass shadow-xl"
+         >
+           <FaArrowUp />
+         </motion.button>
+@@ -37,4 +37,4 @@ const BackToTop = () => {
+   );
+ };
+ 
+-export default BackToTop;
+\ No newline at end of file
++export default BackToTop;
+diff --git a/src/components/layout/Background.jsx b/src/components/layout/Background.jsx
+index efb82fb..cb1e130 100644
+--- a/src/components/layout/Background.jsx
++++ b/src/components/layout/Background.jsx
+@@ -1,28 +1,22 @@
+ const Background = () => {
+   return (
+-    <div className="fixed inset-0 -z-10 overflow-hidden">
++    <div className="fixed inset-0 -z-10 overflow-hidden bg-ink">
+ 
+-      {/* Grid */}
++      {/* Grid — ledger-paper feel, no color glow blobs */}
+       <div
+-        className="absolute inset-0 opacity-5"
++        className="absolute inset-0 opacity-[0.06]"
+         style={{
+           backgroundImage:
+-            "linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px)",
++            "linear-gradient(rgba(237,232,222,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(237,232,222,.5) 1px, transparent 1px)",
+           backgroundSize: "60px 60px",
+         }}
+       />
+ 
+-      {/* Glow 1 */}
+-      <div className="absolute left-20 top-20 h-96 w-96 rounded-full bg-blue-600/20 blur-3xl" />
+-
+-      {/* Glow 2 */}
+-      <div className="absolute bottom-20 right-20 h-96 w-96 rounded-full bg-violet-600/20 blur-3xl" />
+-
+-      {/* Glow 3 */}
+-      <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/10 blur-[150px]" />
++      {/* Single restrained brass glow, top-right */}
++      <div className="absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-brass/[0.06] blur-[160px]" />
+ 
+     </div>
+   );
+ };
+ 
+-export default Background;
+\ No newline at end of file
++export default Background;
+diff --git a/src/components/layout/Footer.jsx b/src/components/layout/Footer.jsx
+index 01f4fc8..97567ae 100644
+--- a/src/components/layout/Footer.jsx
++++ b/src/components/layout/Footer.jsx
+@@ -2,28 +2,28 @@ import { FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+ 
+ const Footer = () => {
+   return (
+-    <footer className="border-t border-white/10 py-10">
++    <footer className="border-t border-ink-line py-10">
+       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 text-center md:flex-row">
+ 
+         <div>
+ 
+-          <h2 className="text-2xl font-black">
+-            <span className="text-blue-400">B</span>M
++          <h2 className="font-display text-2xl font-semibold text-paper">
++            <span className="text-brass">B</span>M
+           </h2>
+ 
+-          <p className="mt-2 text-slate-400">
++          <p className="mt-2 text-paper-muted">
+             Crafting modern web experiences.
+           </p>
+ 
+         </div>
+ 
+-         <div className="flex items-center gap-6 text-slate-400">
++         <div className="flex items-center gap-6 text-paper-muted">
+   <a
+     href="https://github.com/BRIAN-pixel275"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="GitHub"
+-    className="transition-colors duration-300 hover:text-blue-400"
++    className="transition-colors duration-300 hover:text-brass"
+   >
+     <FaGithub size={26} />
+   </a>
+@@ -33,7 +33,7 @@ const Footer = () => {
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Instagram"
+-    className="transition-colors duration-300 hover:text-pink-500"
++    className="transition-colors duration-300 hover:text-brass"
+   >
+     <FaInstagram size={26} />
+   </a>
+@@ -43,7 +43,7 @@ const Footer = () => {
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="LinkedIn"
+-    className="transition-colors duration-300 hover:text-blue-500"
++    className="transition-colors duration-300 hover:text-brass"
+   >
+     <FaLinkedinIn size={26} />
+   </a>
+@@ -51,11 +51,11 @@ const Footer = () => {
+ 
+       </div>
+ 
+-      <p className="mt-8 text-center text-sm text-slate-500">
++      <p className="mt-8 text-center font-mono-ledger text-xs text-paper-muted">
+         © 2026 Brian Muchiru. All rights reserved.
+       </p>
+     </footer>
+   );
+ };
+ 
+-export default Footer;
+\ No newline at end of file
++export default Footer;
+diff --git a/src/components/layout/LoadingScreen.jsx b/src/components/layout/LoadingScreen.jsx
+index ee29bba..5563d75 100644
+--- a/src/components/layout/LoadingScreen.jsx
++++ b/src/components/layout/LoadingScreen.jsx
+@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
+ const LoadingScreen = () => {
+   return (
+     <motion.div
+-      className="fixed inset-0 z-[99999] flex items-center justify-center bg-[#030712]"
++      className="fixed inset-0 z-[99999] flex items-center justify-center bg-ink"
+       initial={{ opacity: 1 }}
+       exit={{ opacity: 0 }}
+       transition={{ duration: 0.8 }}
+@@ -19,9 +19,9 @@ const LoadingScreen = () => {
+           transition={{
+             duration: 0.6,
+           }}
+-          className="text-7xl font-black"
++          className="font-display text-7xl font-semibold text-paper"
+         >
+-          <span className="text-blue-500">B</span>M
++          <span className="text-brass">B</span>M
+         </motion.div>
+ 
+         <motion.h2
+@@ -30,24 +30,13 @@ const LoadingScreen = () => {
+           transition={{
+             delay: 0.3,
+           }}
+-          className="mt-4 text-2xl font-bold"
++          className="mt-4 font-mono-ledger text-sm uppercase tracking-[4px] text-paper-muted"
+         >
+-          Brian Muchiru
++          Brian Muchiru — Software Engineer
+         </motion.h2>
+ 
+-        <motion.p
+-          initial={{ opacity: 0 }}
+-          animate={{ opacity: 1 }}
+-          transition={{
+-            delay: 0.5,
+-          }}
+-          className="mt-2 text-slate-400"
+-        >
+-          Software Engineer
+-        </motion.p>
+-
+         <motion.div
+-          className="mx-auto mt-10 h-1 w-56 overflow-hidden rounded-full bg-slate-700"
++          className="mx-auto mt-10 h-[2px] w-56 overflow-hidden bg-ink-line"
+         >
+           <motion.div
+             initial={{ x: "-100%" }}
+@@ -57,7 +46,7 @@ const LoadingScreen = () => {
+               repeat: Infinity,
+               ease: "easeInOut",
+             }}
+-            className="h-full w-1/2 bg-gradient-to-r from-blue-500 to-violet-500"
++            className="h-full w-1/2 bg-brass"
+           />
+         </motion.div>
+ 
+@@ -66,4 +55,4 @@ const LoadingScreen = () => {
+   );
+ };
+ 
+-export default LoadingScreen;
+\ No newline at end of file
++export default LoadingScreen;
+diff --git a/src/components/layout/Navbar.jsx b/src/components/layout/Navbar.jsx
+index b595411..9984f51 100644
+--- a/src/components/layout/Navbar.jsx
++++ b/src/components/layout/Navbar.jsx
+@@ -60,16 +60,15 @@ const Navbar = () => {
+         className={`
+           w-full
+           max-w-7xl
+-          rounded-full
++          rounded-sm
+           border
+-          border-white/10
+-          backdrop-blur-xl
++          border-ink-line
+           transition-all
+           duration-300
+           ${
+             scrolled
+-              ? "bg-slate-900/90 shadow-2xl py-3"
+-              : "bg-slate-900/70 py-4"
++              ? "bg-ink-raised/95 shadow-2xl py-3"
++              : "bg-ink-raised/80 py-4"
+           }
+         `}
+       >
+@@ -79,9 +78,9 @@ const Navbar = () => {
+ 
+           <a
+             href="#home"
+-            className="text-3xl font-black tracking-tight"
++            className="font-display text-3xl font-semibold tracking-tight text-paper"
+           >
+-            <span className="text-blue-500">B</span>M
++            <span className="text-brass">B</span>M
+           </a>
+ 
+           {/* Desktop Menu */}
+@@ -97,10 +96,10 @@ const Navbar = () => {
+ 
+                   <a
+                     href={link.href}
+-                    className={`relative font-medium transition-colors duration-300 ${
++                    className={`relative font-mono-ledger text-sm uppercase tracking-wide transition-colors duration-300 ${
+                       isActive
+-                        ? "text-white"
+-                        : "text-slate-400 hover:text-white"
++                        ? "text-brass"
++                        : "text-paper-muted hover:text-paper"
+                     }`}
+                   >
+                     {link.name}
+@@ -108,7 +107,7 @@ const Navbar = () => {
+                     {isActive && (
+                       <motion.div
+                         layoutId="navbar-indicator"
+-                        className="absolute -bottom-2 left-0 right-0 mx-auto h-[3px] w-8 rounded-full bg-blue-500"
++                        className="absolute -bottom-2 left-0 right-0 mx-auto h-[2px] w-full bg-brass"
+                       />
+                     )}
+                   </a>
+@@ -125,7 +124,7 @@ const Navbar = () => {
+             href="/resume.pdf"
+             target="_blank"
+             rel="noopener noreferrer"
+-            className="hidden rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-7 py-3 font-semibold text-white transition hover:scale-105 lg:block"
++            className="hidden rounded-sm bg-brass px-7 py-3 font-semibold text-ink transition hover:bg-brass-deep lg:block"
+           >
+             Resume
+           </a>
+@@ -134,7 +133,7 @@ const Navbar = () => {
+ 
+           <button
+             onClick={() => setMobileOpen(!mobileOpen)}
+-            className="lg:hidden"
++            className="text-paper lg:hidden"
+           >
+             {mobileOpen ? (
+               <X size={28} />
+@@ -152,7 +151,7 @@ const Navbar = () => {
+           <motion.div
+             initial={{ opacity: 0, y: -15 }}
+             animate={{ opacity: 1, y: 0 }}
+-            className="mt-6 rounded-3xl border-t border-white/10 bg-slate-900/95 p-6 lg:hidden"
++            className="mt-6 border-t border-ink-line bg-ink-raised p-6 lg:hidden"
+           >
+             <ul className="space-y-5">
+ 
+@@ -163,11 +162,11 @@ const Navbar = () => {
+                   <a
+                     href={link.href}
+                     onClick={() => setMobileOpen(false)}
+-                    className={`block text-lg ${
++                    className={`block font-mono-ledger text-lg uppercase tracking-wide ${
+                       activeSection ===
+                       link.href.replace("#", "")
+-                        ? "text-blue-400"
+-                        : "text-slate-300"
++                        ? "text-brass"
++                        : "text-paper-muted"
+                     }`}
+                   >
+                     {link.name}
+@@ -188,4 +187,4 @@ const Navbar = () => {
+   );
+ };
+ 
+-export default Navbar;
+\ No newline at end of file
++export default Navbar;
+diff --git a/src/components/layout/ScrollProgress.jsx b/src/components/layout/ScrollProgress.jsx
+index ee05581..b791d94 100644
+--- a/src/components/layout/ScrollProgress.jsx
++++ b/src/components/layout/ScrollProgress.jsx
+@@ -5,7 +5,7 @@ const ScrollProgress = () => {
+ 
+   return (
+     <motion.div
+-      className="fixed left-0 top-0 z-[100] h-1 origin-left bg-gradient-to-r from-blue-500 via-cyan-400 to-violet-500"
++      className="fixed left-0 top-0 z-[100] h-[3px] origin-left bg-brass"
+       style={{
+         scaleX: scrollYProgress,
+       }}
+@@ -13,4 +13,4 @@ const ScrollProgress = () => {
+   );
+ };
+ 
+-export default ScrollProgress;
+\ No newline at end of file
++export default ScrollProgress;
+diff --git a/src/components/sections/About.jsx b/src/components/sections/About.jsx
+index 259d2cc..4deed9d 100644
+--- a/src/components/sections/About.jsx
++++ b/src/components/sections/About.jsx
+@@ -1,5 +1,3 @@
+-import { motion } from "framer-motion";
+-
+ import Container from "../layout/Container";
+ import SectionHeading from "../ui/SectionHeading";
+ import GlassCard from "../ui/GlassCard";
+@@ -10,12 +8,6 @@ const About = () => {
+       id="about"
+       className="py-32"
+     >
+-      <motion.section
+-  initial={{ opacity: 0, y: 60 }}
+-  whileInView={{ opacity: 1, y: 0 }}
+-  viewport={{ once: true, amount: 0.2 }}
+-  transition={{ duration: 0.7 }}
+-></motion.section>
+       <Container>
+ 
+         <SectionHeading
+@@ -28,11 +20,11 @@ const About = () => {
+ 
+           <GlassCard className="p-8">
+ 
+-            <h3 className="text-2xl font-semibold">
++            <h3 className="font-display text-2xl font-semibold text-paper">
+               My Journey
+             </h3>
+ 
+-            <p className="mt-6 leading-8 text-slate-400">
++            <p className="mt-6 leading-8 text-paper-muted">
+ 
+               My journey into software development started
+               with curiosity about how websites work. Since then,
+@@ -46,11 +38,11 @@ const About = () => {
+ 
+           <GlassCard className="p-8">
+ 
+-            <h3 className="text-2xl font-semibold">
++            <h3 className="font-display text-2xl font-semibold text-paper">
+               What I Love
+             </h3>
+ 
+-            <ol className="mt-6 space-y-5 text-slate-400">
++            <ol className="mt-6 space-y-5 text-paper-muted">
+ 
+               <li> Building responsive web applications</li>
+ 
+@@ -73,4 +65,4 @@ const About = () => {
+   );
+ };
+ 
+-export default About;
+\ No newline at end of file
++export default About;
+diff --git a/src/components/sections/Contact.jsx b/src/components/sections/Contact.jsx
+index 945651e..1eccf4a 100644
+--- a/src/components/sections/Contact.jsx
++++ b/src/components/sections/Contact.jsx
+@@ -54,7 +54,7 @@ const Contact = () => {
+               required
+               value={formData.name}
+               onChange={handleChange}
+-              className="w-full rounded-xl border border-white/10 bg-white/5 p-4 outline-none transition focus:border-blue-500"
++              className="w-full rounded-sm border border-ink-line bg-ink p-4 text-paper outline-none transition focus:border-brass"
+             />
+ 
+             <input
+@@ -64,7 +64,7 @@ const Contact = () => {
+               required
+               value={formData.email}
+               onChange={handleChange}
+-              className="w-full rounded-xl border border-white/10 bg-white/5 p-4 outline-none transition focus:border-blue-500"
++              className="w-full rounded-sm border border-ink-line bg-ink p-4 text-paper outline-none transition focus:border-brass"
+             />
+ 
+             <textarea
+@@ -74,24 +74,24 @@ const Contact = () => {
+               required
+               value={formData.message}
+               onChange={handleChange}
+-              className="w-full rounded-xl border border-white/10 bg-white/5 p-4 outline-none transition focus:border-blue-500"
++              className="w-full rounded-sm border border-ink-line bg-ink p-4 text-paper outline-none transition focus:border-brass"
+             />
+ 
+             <button
+               type="submit"
+               disabled={status === "sending"}
+-              className="rounded-full bg-gradient-to-r from-blue-500 to-violet-500 px-8 py-4 font-semibold disabled:opacity-60"
++              className="rounded-sm bg-brass px-8 py-4 font-semibold text-ink transition hover:bg-brass-deep disabled:opacity-60"
+             >
+               {status === "sending" ? "Sending..." : "Send Message"}
+             </button>
+ 
+             {status === "success" && (
+-              <p className="text-sm text-green-400">
++              <p className="font-mono-ledger text-sm text-moss">
+                 Thanks! Your message has been sent — I'll get back to you soon.
+               </p>
+             )}
+             {status === "error" && (
+-              <p className="text-sm text-red-400">
++              <p className="font-mono-ledger text-sm text-red-400">
+                 Something went wrong. Please try again or email me directly.
+               </p>
+             )}
+diff --git a/src/components/sections/Hero.jsx b/src/components/sections/Hero.jsx
+index 3388b34..b4b72a6 100644
+--- a/src/components/sections/Hero.jsx
++++ b/src/components/sections/Hero.jsx
+@@ -3,7 +3,6 @@ import { TypeAnimation } from "react-type-animation";
+ import { FaArrowDown } from "react-icons/fa";
+ 
+ import Container from "../layout/Container";
+-import Button from "../ui/Button";
+ import ProfileCard from "../ui/ProfileCard";
+ import FloatingBadge from "../ui/FloatingBadge";
+ import StatCard from "../ui/StatCard";
+@@ -25,21 +24,21 @@ const Hero = () => {
+           >
+             {/* Available Badge */}
+ 
+-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-5 py-2 backdrop-blur-xl">
+-              <span className="h-2 w-2 rounded-full bg-emerald-400"></span>
++            <div className="inline-flex items-center gap-2 rounded-sm border border-moss/30 bg-ink-raised px-5 py-2">
++              <span className="h-2 w-2 rounded-full bg-moss"></span>
+ 
+-              <span className="text-sm text-emerald-300">
++              <span className="font-mono-ledger text-sm text-paper">
+                 Available for Work
+               </span>
+             </div>
+ 
+             {/* Heading */}
+ 
+-            <h1 className="mt-8 text-6xl font-black leading-none lg:text-7xl">
++            <h1 className="mt-8 font-display text-6xl font-semibold leading-none text-paper lg:text-7xl">
+               Building
+               <br />
+ 
+-              <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-violet-500 bg-clip-text text-transparent">
++              <span className="text-brass">
+                 Digital
+               </span>
+ 
+@@ -66,12 +65,12 @@ const Hero = () => {
+               ]}
+               speed={50}
+               repeat={Infinity}
+-              className="mt-8 block text-2xl font-semibold text-blue-400"
++              className="mt-8 block font-mono-ledger text-xl text-brass"
+             />
+ 
+             {/* Description */}
+ 
+-            <p className="mt-8 max-w-xl text-lg leading-8 text-slate-400">
++            <p className="mt-8 max-w-xl text-lg leading-8 text-paper-muted">
+               I build fast, responsive and modern web applications using React,
+               Tailwind CSS, JavaScript and Java, focusing on clean design and
+               great user experiences.
+@@ -81,21 +80,20 @@ const Hero = () => {
+ 
+             <div className="mt-10 flex flex-wrap gap-5">
+               <a
+-               href="#projects"
+-                className="mt-10 flex flex-wrap gap-5 rounded-full border border-white/10 bg-white/5 px-6 py-3 font-semibold transition duration-300 hover:border-blue-400 hover:bg-white/10"
+-                     >
+-              View Projects
+-                 </a>
+-
+-             <a
++                href="#projects"
++                className="rounded-sm bg-brass px-6 py-3 font-semibold text-ink transition duration-300 hover:bg-brass-deep"
++              >
++                View Projects
++              </a>
+ 
+-                 href="/resume.pdf"
++              <a
++                href="/resume.pdf"
+                 target="_blank"
+-                 rel="noopener noreferrer"
+-                 download
+-                 className="mt-10 flex flex-wrap gap-5 rounded-full border border-white/10 bg-white/5 px-6 py-3 font-semibold transition duration-300 hover:border-blue-400 hover:bg-white/10"
+-                      >
+-                      Download Resume
++                rel="noopener noreferrer"
++                download
++                className="rounded-sm border border-ink-line px-6 py-3 font-semibold text-paper transition duration-300 hover:border-brass hover:text-brass"
++              >
++                Download Resume
+               </a>
+             </div>
+ 
+@@ -163,8 +161,8 @@ const Hero = () => {
+         }}
+         className="absolute bottom-8 left-1/2 -translate-x-1/2"
+       >
+-        <div className="flex flex-col items-center gap-3 text-slate-400">
+-          <span className="text-sm tracking-widest uppercase">
++        <div className="flex flex-col items-center gap-3 text-paper-muted">
++          <span className="font-mono-ledger text-sm tracking-widest uppercase">
+             Scroll
+           </span>
+ 
+@@ -175,4 +173,4 @@ const Hero = () => {
+   );
+ };
+ 
+-export default Hero;
+\ No newline at end of file
++export default Hero;
+diff --git a/src/components/ui/BrowserFrame.jsx b/src/components/ui/BrowserFrame.jsx
+index 8caa2e7..a81701a 100644
+--- a/src/components/ui/BrowserFrame.jsx
++++ b/src/components/ui/BrowserFrame.jsx
+@@ -1,18 +1,18 @@
+ const BrowserFrame = ({ children }) => {
+   return (
+-    <div className="overflow-hidden rounded-3xl border border-white/10 bg-[#0f172a]/80 shadow-2xl backdrop-blur-xl">
++    <div className="overflow-hidden rounded-sm border border-ink-line bg-ink-raised shadow-2xl">
+ 
+       {/* Browser Header */}
+ 
+-      <div className="flex items-center gap-2 border-b border-white/10 bg-white/5 px-5 py-4">
++      <div className="flex items-center gap-2 border-b border-ink-line bg-ink px-5 py-4">
+ 
+-        <span className="h-3 w-3 rounded-full bg-red-500"></span>
++        <span className="h-3 w-3 rounded-full bg-red-500/70"></span>
+ 
+-        <span className="h-3 w-3 rounded-full bg-yellow-500"></span>
++        <span className="h-3 w-3 rounded-full bg-brass/70"></span>
+ 
+-        <span className="h-3 w-3 rounded-full bg-green-500"></span>
++        <span className="h-3 w-3 rounded-full bg-moss/70"></span>
+ 
+-        <div className="ml-4 rounded-full bg-white/10 px-4 py-1 text-xs text-slate-400">
++        <div className="ml-4 rounded-sm bg-ink-line px-4 py-1 font-mono-ledger text-xs text-paper-muted">
+           localhost:5173
+         </div>
+ 
+@@ -24,4 +24,4 @@ const BrowserFrame = ({ children }) => {
+   );
+ };
+ 
+-export default BrowserFrame;
+\ No newline at end of file
++export default BrowserFrame;
+diff --git a/src/components/ui/Button.jsx b/src/components/ui/Button.jsx
+index 2612174..adc45c8 100644
+--- a/src/components/ui/Button.jsx
++++ b/src/components/ui/Button.jsx
+@@ -10,7 +10,7 @@ const Button = ({
+         group
+         relative
+         overflow-hidden
+-        rounded-full
++        rounded-sm
+         px-8
+         py-4
+         font-semibold
+@@ -18,8 +18,8 @@ const Button = ({
+         duration-300
+         ${
+           primary
+-            ? "bg-gradient-to-r from-blue-500 via-blue-600 to-violet-600 text-white shadow-lg shadow-blue-500/20 hover:scale-105 hover:shadow-blue-500/40"
+-            : "border border-white/10 bg-white/5 text-white backdrop-blur-xl hover:bg-white/10 hover:border-blue-400/30"
++            ? "bg-brass text-ink shadow-[0_10px_30px_rgba(200,150,62,0.25)] hover:bg-brass-deep"
++            : "border border-ink-line bg-transparent text-paper hover:border-brass hover:text-brass"
+         }
+       `}
+     >
+@@ -28,4 +28,4 @@ const Button = ({
+   );
+ };
+ 
+-export default Button;
+\ No newline at end of file
++export default Button;
+diff --git a/src/components/ui/Counter.jsx b/src/components/ui/Counter.jsx
+index 442a4d7..356e120 100644
+--- a/src/components/ui/Counter.jsx
++++ b/src/components/ui/Counter.jsx
+@@ -1,7 +1,7 @@
+ const Counter = ({ end, label }) => {
+   return (
+     <div>
+-      <h3 className="text-4xl font-bold text-blue-400">
++      <h3 className="font-mono-ledger text-4xl font-semibold text-brass">
+         {end}+
+       </h3>
+ 
+diff --git a/src/components/ui/FloatingBadge.jsx b/src/components/ui/FloatingBadge.jsx
+index 8397f4b..36e584e 100644
+--- a/src/components/ui/FloatingBadge.jsx
++++ b/src/components/ui/FloatingBadge.jsx
+@@ -10,11 +10,11 @@ const FloatingBadge = ({ title, className }) => {
+         duration: 3,
+         repeat: Infinity,
+       }}
+-      className={`absolute rounded-full border border-white/10 bg-white/10 px-5 py-3 backdrop-blur-2xl ${className}`}
++      className={`absolute rounded-sm border border-ink-line bg-ink-raised px-5 py-3 font-mono-ledger text-sm text-paper ${className}`}
+     >
+       {title}
+     </motion.div>
+   );
+ };
+ 
+-export default FloatingBadge;
+\ No newline at end of file
++export default FloatingBadge;
+diff --git a/src/components/ui/GlassCard.jsx b/src/components/ui/GlassCard.jsx
+index 6953574..4d86673 100644
+--- a/src/components/ui/GlassCard.jsx
++++ b/src/components/ui/GlassCard.jsx
+@@ -2,12 +2,13 @@ const GlassCard = ({ children, className = "" }) => {
+   return (
+     <div
+       className={`
+-        rounded-[32px]
++        rounded-sm
+         border
+-        border-white/10
+-        bg-white/[0.05]
+-        backdrop-blur-2xl
+-        shadow-[0_20px_80px_rgba(0,0,0,0.45)]
++        border-ink-line
++        border-t-2
++        border-t-brass
++        bg-ink-raised
++        shadow-[0_16px_40px_rgba(0,0,0,0.35)]
+         ${className}
+       `}
+     >
+@@ -16,4 +17,4 @@ const GlassCard = ({ children, className = "" }) => {
+   );
+ };
+ 
+-export default GlassCard;
+\ No newline at end of file
++export default GlassCard;
+diff --git a/src/components/ui/ProfileCard.jsx b/src/components/ui/ProfileCard.jsx
+index 14989e0..5bdd994 100644
+--- a/src/components/ui/ProfileCard.jsx
++++ b/src/components/ui/ProfileCard.jsx
+@@ -13,26 +13,26 @@ const ProfileCard = () => {
+       }}
+       className="relative"
+     >
+-      {/* Outer Glow */}
+-      <div className="absolute inset-0 rounded-[40px] bg-gradient-to-r from-blue-500/30 via-cyan-400/20 to-violet-500/30 blur-3xl" />
++      {/* Outer Glow — single restrained brass glow instead of multi-color */}
++      <div className="absolute inset-0 rounded-sm bg-brass/10 blur-3xl" />
+ 
+-      {/* Glass Border */}
+-      <div className="relative rounded-[40px] border border-white/10 bg-white/5 p-3 backdrop-blur-3xl">
++      {/* Frame */}
++      <div className="relative rounded-sm border border-ink-line bg-ink-raised p-3">
+ 
+         <img
+           src={profile}
+           alt="Brian Muchiru"
+-          className="h-[520px] w-[380px] rounded-[30px] object-cover"
++          className="h-[520px] w-[380px] rounded-sm object-cover grayscale-[15%]"
+         />
+ 
+       </div>
+ 
+       {/* Status */}
+-      <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-500/10 px-5 py-2 backdrop-blur-xl">
++      <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-sm border border-moss/30 bg-ink-raised px-5 py-2">
+ 
+-        <span className="h-3 w-3 rounded-full bg-emerald-400" />
++        <span className="h-2 w-2 rounded-full bg-moss" />
+ 
+-        <span className="text-sm">
++        <span className="font-mono-ledger text-sm text-paper">
+           Available for Work
+         </span>
+ 
+@@ -41,4 +41,4 @@ const ProfileCard = () => {
+   );
+ };
+ 
+-export default ProfileCard;
+\ No newline at end of file
++export default ProfileCard;
+diff --git a/src/components/ui/ProjectCard.jsx b/src/components/ui/ProjectCard.jsx
+index c97abe7..78b7fec 100644
+--- a/src/components/ui/ProjectCard.jsx
++++ b/src/components/ui/ProjectCard.jsx
+@@ -35,15 +35,15 @@ const ProjectCard = ({ project, reverse }) => {
+           {/* ================= CONTENT ================= */}
+ 
+           <div>
+-            <span className="inline-flex rounded-full bg-blue-500/10 px-4 py-2 text-sm font-medium text-blue-400">
++            <span className="inline-flex border-b-2 border-brass pb-1 font-mono-ledger text-xs uppercase tracking-[3px] text-brass">
+               Featured Project
+             </span>
+ 
+-            <h2 className="mt-6 text-4xl font-bold">
++            <h2 className="mt-6 font-display text-4xl font-semibold text-paper">
+               {project.title}
+             </h2>
+ 
+-            <p className="mt-6 leading-8 text-slate-400">
++            <p className="mt-6 leading-8 text-paper-muted">
+               {project.description}
+             </p>
+ 
+@@ -53,7 +53,7 @@ const ProjectCard = ({ project, reverse }) => {
+               {project.tech.map((tech) => (
+                 <span
+                   key={tech}
+-                  className="rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-sm font-medium text-blue-300 transition hover:border-blue-400 hover:bg-blue-500/20"
++                  className="rounded-sm border border-ink-line px-4 py-2 font-mono-ledger text-sm text-paper-muted transition hover:border-brass hover:text-brass"
+                 >
+                   {tech}
+                 </span>
+@@ -67,7 +67,7 @@ const ProjectCard = ({ project, reverse }) => {
+                 href={project.live}
+                 target="_blank"
+                 rel="noopener noreferrer"
+-                className="flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-violet-500 px-6 py-3 font-semibold transition duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/30"
++                className="flex items-center gap-2 rounded-sm bg-brass px-6 py-3 font-semibold text-ink transition duration-300 hover:bg-brass-deep"
+               >
+                 <FaExternalLinkAlt />
+ 
+@@ -78,7 +78,7 @@ const ProjectCard = ({ project, reverse }) => {
+                 href={project.github}
+                 target="_blank"
+                 rel="noopener noreferrer"
+-                className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3 font-semibold transition duration-300 hover:border-blue-400 hover:bg-white/10"
++                className="flex items-center gap-2 rounded-sm border border-ink-line px-6 py-3 font-semibold text-paper transition duration-300 hover:border-brass hover:text-brass"
+               >
+                 <FaGithub />
+ 
+@@ -92,4 +92,4 @@ const ProjectCard = ({ project, reverse }) => {
+   );
+ };
+ 
+-export default ProjectCard;
+\ No newline at end of file
++export default ProjectCard;
+diff --git a/src/components/ui/SectionHeading.jsx b/src/components/ui/SectionHeading.jsx
+index a30fa45..5ceed7f 100644
+--- a/src/components/ui/SectionHeading.jsx
++++ b/src/components/ui/SectionHeading.jsx
+@@ -6,15 +6,15 @@ const SectionHeading = ({
+   return (
+     <div className="mb-16">
+ 
+-      <span className="rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-sm font-medium text-blue-400">
++      <span className="inline-block border-b-2 border-brass pb-2 font-mono-ledger text-xs uppercase tracking-[3px] text-brass">
+         {badge}
+       </span>
+ 
+-      <h2 className="mt-6 text-4xl font-bold md:text-5xl">
++      <h2 className="mt-6 font-display text-4xl font-semibold md:text-5xl">
+         {title}
+       </h2>
+ 
+-      <p className="mt-4 max-w-2xl text-slate-400">
++      <p className="mt-4 max-w-2xl text-paper-muted">
+         {subtitle}
+       </p>
+ 
+@@ -22,4 +22,4 @@ const SectionHeading = ({
+   );
+ };
+ 
+-export default SectionHeading;
+\ No newline at end of file
++export default SectionHeading;
+diff --git a/src/components/ui/SelectionTitle.jsx b/src/components/ui/SelectionTitle.jsx
+index aa0e038..237e710 100644
+--- a/src/components/ui/SelectionTitle.jsx
++++ b/src/components/ui/SelectionTitle.jsx
+@@ -1,15 +1,15 @@
+ const SectionTitle = ({ title, subtitle }) => {
+   return (
+     <div className="mb-16 text-center">
+-      <p className="text-blue-400 uppercase tracking-[6px]">
++      <p className="font-mono-ledger text-brass uppercase tracking-[6px]">
+         {subtitle}
+       </p>
+ 
+-      <h2 className="mt-4 text-5xl font-bold">
++      <h2 className="mt-4 font-display text-5xl font-semibold">
+         {title}
+       </h2>
+     </div>
+   );
+ };
+ 
+-export default SectionTitle;
+\ No newline at end of file
++export default SectionTitle;
+diff --git a/src/components/ui/SkillCard.jsx b/src/components/ui/SkillCard.jsx
+index f5ad275..39653d7 100644
+--- a/src/components/ui/SkillCard.jsx
++++ b/src/components/ui/SkillCard.jsx
+@@ -8,7 +8,6 @@ const SkillCard = ({ skill }) => {
+     <motion.div
+       whileHover={{
+         y: -8,
+-        scale: 1.02,
+       }}
+       transition={{ duration: 0.25 }}
+     >
+@@ -16,14 +15,14 @@ const SkillCard = ({ skill }) => {
+ 
+         <div className="flex items-center gap-4">
+ 
+-          <Icon className="text-3xl text-blue-400" />
++          <Icon className="text-3xl text-brass" />
+ 
+           <div>
+-            <h3 className="font-semibold text-lg">
++            <h3 className="font-semibold text-lg text-paper">
+               {skill.name}
+             </h3>
+ 
+-            <p className="text-sm text-slate-400">
++            <p className="font-mono-ledger text-sm text-paper-muted">
+               {skill.category}
+             </p>
+           </div>
+@@ -32,7 +31,7 @@ const SkillCard = ({ skill }) => {
+ 
+         <div className="mt-6">
+ 
+-          <div className="mb-2 flex justify-between text-sm">
++          <div className="mb-2 flex justify-between font-mono-ledger text-sm text-paper-muted">
+ 
+             <span>Proficiency</span>
+ 
+@@ -40,7 +39,7 @@ const SkillCard = ({ skill }) => {
+ 
+           </div>
+ 
+-          <div className="h-2 rounded-full bg-white/10">
++          <div className="h-1 bg-ink-line">
+ 
+             <motion.div
+               initial={{ width: 0 }}
+@@ -49,7 +48,7 @@ const SkillCard = ({ skill }) => {
+               }}
+               viewport={{ once: true }}
+               transition={{ duration: 1 }}
+-              className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-violet-500"
++              className="h-1 bg-brass"
+             />
+ 
+           </div>
+@@ -61,4 +60,4 @@ const SkillCard = ({ skill }) => {
+   );
+ };
+ 
+-export default SkillCard;
+\ No newline at end of file
++export default SkillCard;
+diff --git a/src/components/ui/StatCard.jsx b/src/components/ui/StatCard.jsx
+index 705ffc0..f5a9a78 100644
+--- a/src/components/ui/StatCard.jsx
++++ b/src/components/ui/StatCard.jsx
+@@ -1,15 +1,15 @@
+ const StatCard = ({ value, label }) => {
+   return (
+-    <div className="rounded-2xl border border-white/10 bg-white/5 px-6 py-5 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-blue-400">
+-      <h3 className="text-3xl font-bold text-blue-400">
++    <div className="rounded-sm border border-ink-line bg-ink-raised px-6 py-5 transition duration-300 hover:-translate-y-1 hover:border-brass">
++      <h3 className="font-mono-ledger text-3xl font-semibold text-brass">
+         {value}
+       </h3>
+ 
+-      <p className="mt-2 text-sm text-slate-400">
++      <p className="mt-2 text-sm text-paper-muted">
+         {label}
+       </p>
+     </div>
+   );
+ };
+ 
+-export default StatCard;
+\ No newline at end of file
++export default StatCard;
+diff --git a/src/components/ui/TimeLineCard.jsx b/src/components/ui/TimeLineCard.jsx
+index 015bbf0..2da9bfb 100644
+--- a/src/components/ui/TimeLineCard.jsx
++++ b/src/components/ui/TimeLineCard.jsx
+@@ -12,26 +12,26 @@ const TimeLineCard = ({ item, isLast }) => {
+     >
+       {/* Timeline */}
+       <div className="flex flex-col items-center">
+-        <div className="flex h-14 w-14 items-center justify-center rounded-full bg-blue-500 text-2xl shadow-lg">
++        <div className="flex h-14 w-14 items-center justify-center rounded-sm border border-brass bg-ink-raised text-2xl">
+           {item.icon}
+         </div>
+ 
+         {!isLast && (
+-          <div className="mt-2 h-full w-1 rounded-full bg-blue-500/30" />
++          <div className="mt-2 h-full w-px bg-ink-line" />
+         )}
+       </div>
+ 
+       {/* Card */}
+       <GlassCard className="mb-10 flex-1 p-6">
+-        <p className="text-sm font-semibold uppercase tracking-wider text-blue-400">
++        <p className="font-mono-ledger text-sm font-semibold uppercase tracking-wider text-brass">
+           {item.year}
+         </p>
+ 
+-        <h3 className="mt-2 text-2xl font-bold text-white">
++        <h3 className="mt-2 font-display text-2xl font-semibold text-paper">
+           {item.title}
+         </h3>
+ 
+-        <p className="mt-4 leading-7 text-slate-400">
++        <p className="mt-4 leading-7 text-paper-muted">
+           {item.description}
+         </p>
+       </GlassCard>
+@@ -39,4 +39,4 @@ const TimeLineCard = ({ item, isLast }) => {
+   );
+ };
+ 
+-export default TimeLineCard;
+\ No newline at end of file
++export default TimeLineCard;
+diff --git a/src/index.css b/src/index.css
+index f1c0cb9..20c2192 100644
+--- a/src/index.css
++++ b/src/index.css
+@@ -1,15 +1,30 @@
+-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
++@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+ 
+ @import "tailwindcss";
+ 
++@theme {
++  --color-ink: #0b0d0a;
++  --color-ink-raised: #16140f;
++  --color-ink-line: #262218;
++  --color-paper: #ede8de;
++  --color-paper-muted: #9c9484;
++  --color-brass: #c8963e;
++  --color-brass-deep: #96702c;
++  --color-moss: #7c9473;
++
++  --font-display: "Newsreader", serif;
++  --font-sans: "Inter", sans-serif;
++  --font-mono-ledger: "IBM Plex Mono", ui-monospace, monospace;
++}
++
+ html {
+   scroll-behavior: smooth;
+ }
+ 
+ body {
+   font-family: "Inter", sans-serif;
+-  background: #030712;
+-  color: white;
++  background: var(--color-ink);
++  color: var(--color-paper);
+ }
+ 
+ * {
+@@ -17,6 +32,21 @@ body {
+ }
+ 
+ ::selection {
+-  background: #3b82f6;
+-  color: white;
++  background: var(--color-brass);
++  color: var(--color-ink);
++}
++
++/* thin warm scrollbar to match the ledger tone instead of default gray/blue */
++::-webkit-scrollbar {
++  width: 10px;
++}
++::-webkit-scrollbar-track {
++  background: var(--color-ink);
++}
++::-webkit-scrollbar-thumb {
++  background: var(--color-ink-line);
++  border-radius: 0;
++}
++::-webkit-scrollbar-thumb:hover {
++  background: var(--color-brass-deep);
+ }

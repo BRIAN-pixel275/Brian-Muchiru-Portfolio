@@ -21,14 +21,14 @@ const BackToTop = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 30 }}
-          whileHover={{ scale: 1.1 }}
+          whileHover={{ scale: 1.05 }}
           onClick={() =>
             window.scrollTo({
               top: 0,
               behavior: "smooth",
             })
           }
-          className="fixed bottom-8 right-8 z-50 rounded-full bg-blue-600 p-4 text-white shadow-xl"
+          className="fixed bottom-8 right-8 z-50 rounded-sm border border-brass bg-ink-raised p-4 text-brass shadow-xl"
         >
           <FaArrowUp />
         </motion.button>

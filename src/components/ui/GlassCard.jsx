@@ -2,12 +2,13 @@ const GlassCard = ({ children, className = "" }) => {
   return (
     <div
       className={`
-        rounded-[32px]
+        rounded-sm
         border
-        border-white/10
-        bg-white/[0.05]
-        backdrop-blur-2xl
-        shadow-[0_20px_80px_rgba(0,0,0,0.45)]
+        border-ink-line
+        border-t-2
+        border-t-brass
+        bg-ink-raised
+        shadow-[0_16px_40px_rgba(0,0,0,0.35)]
         ${className}
       `}
     >

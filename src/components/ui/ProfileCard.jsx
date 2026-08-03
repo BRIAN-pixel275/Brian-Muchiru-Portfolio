@@ -13,26 +13,26 @@ const ProfileCard = () => {
       }}
       className="relative"
     >
-      {/* Outer Glow */}
-      <div className="absolute inset-0 rounded-[40px] bg-gradient-to-r from-blue-500/30 via-cyan-400/20 to-violet-500/30 blur-3xl" />
+      {/* Outer Glow — single restrained brass glow instead of multi-color */}
+      <div className="absolute inset-0 rounded-sm bg-brass/10 blur-3xl" />
 
-      {/* Glass Border */}
-      <div className="relative rounded-[40px] border border-white/10 bg-white/5 p-3 backdrop-blur-3xl">
+      {/* Frame */}
+      <div className="relative rounded-sm border border-ink-line bg-ink-raised p-3">
 
         <img
           src={profile}
           alt="Brian Muchiru"
-          className="h-[520px] w-[380px] rounded-[30px] object-cover"
+          className="h-[520px] w-[380px] rounded-sm object-cover grayscale-[15%]"
         />
 
       </div>
 
       {/* Status */}
-      <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-500/10 px-5 py-2 backdrop-blur-xl">
+      <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-sm border border-moss/30 bg-ink-raised px-5 py-2">
 
-        <span className="h-3 w-3 rounded-full bg-emerald-400" />
+        <span className="h-2 w-2 rounded-full bg-moss" />
 
-        <span className="text-sm">
+        <span className="font-mono-ledger text-sm text-paper">
           Available for Work
         </span>
 

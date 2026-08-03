@@ -10,7 +10,7 @@ const Button = ({
         group
         relative
         overflow-hidden
-        rounded-full
+        rounded-sm
         px-8
         py-4
         font-semibold
@@ -18,8 +18,8 @@ const Button = ({
         duration-300
         ${
           primary
-            ? "bg-gradient-to-r from-blue-500 via-blue-600 to-violet-600 text-white shadow-lg shadow-blue-500/20 hover:scale-105 hover:shadow-blue-500/40"
-            : "border border-white/10 bg-white/5 text-white backdrop-blur-xl hover:bg-white/10 hover:border-blue-400/30"
+            ? "bg-brass text-ink shadow-[0_10px_30px_rgba(200,150,62,0.25)] hover:bg-brass-deep"
+            : "border border-ink-line bg-transparent text-paper hover:border-brass hover:text-brass"
         }
       `}
     >

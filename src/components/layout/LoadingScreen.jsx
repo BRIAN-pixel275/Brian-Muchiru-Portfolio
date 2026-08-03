@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const LoadingScreen = () => {
   return (
     <motion.div
-      className="fixed inset-0 z-[99999] flex items-center justify-center bg-[#030712]"
+      className="fixed inset-0 z-[99999] flex items-center justify-center bg-ink"
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.8 }}
@@ -19,9 +19,9 @@ const LoadingScreen = () => {
           transition={{
             duration: 0.6,
           }}
-          className="text-7xl font-black"
+          className="font-display text-7xl font-semibold text-paper"
         >
-          <span className="text-blue-500">B</span>M
+          <span className="text-brass">B</span>M
         </motion.div>
 
         <motion.h2
@@ -30,24 +30,13 @@ const LoadingScreen = () => {
           transition={{
             delay: 0.3,
           }}
-          className="mt-4 text-2xl font-bold"
+          className="mt-4 font-mono-ledger text-sm uppercase tracking-[4px] text-paper-muted"
         >
-          Brian Muchiru
+          Brian Muchiru — Software Engineer
         </motion.h2>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            delay: 0.5,
-          }}
-          className="mt-2 text-slate-400"
-        >
-          Software Engineer
-        </motion.p>
-
         <motion.div
-          className="mx-auto mt-10 h-1 w-56 overflow-hidden rounded-full bg-slate-700"
+          className="mx-auto mt-10 h-[2px] w-56 overflow-hidden bg-ink-line"
         >
           <motion.div
             initial={{ x: "-100%" }}
@@ -57,7 +46,7 @@ const LoadingScreen = () => {
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="h-full w-1/2 bg-gradient-to-r from-blue-500 to-violet-500"
+            className="h-full w-1/2 bg-brass"
           />
         </motion.div>
 

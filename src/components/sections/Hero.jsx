@@ -3,7 +3,6 @@ import { TypeAnimation } from "react-type-animation";
 import { FaArrowDown } from "react-icons/fa";
 
 import Container from "../layout/Container";
-import Button from "../ui/Button";
 import ProfileCard from "../ui/ProfileCard";
 import FloatingBadge from "../ui/FloatingBadge";
 import StatCard from "../ui/StatCard";
@@ -25,21 +24,21 @@ const Hero = () => {
           >
             {/* Available Badge */}
 
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-5 py-2 backdrop-blur-xl">
-              <span className="h-2 w-2 rounded-full bg-emerald-400"></span>
+            <div className="inline-flex items-center gap-2 rounded-sm border border-moss/30 bg-ink-raised px-5 py-2">
+              <span className="h-2 w-2 rounded-full bg-moss"></span>
 
-              <span className="text-sm text-emerald-300">
+              <span className="font-mono-ledger text-sm text-paper">
                 Available for Work
               </span>
             </div>
 
             {/* Heading */}
 
-            <h1 className="mt-8 text-6xl font-black leading-none lg:text-7xl">
+            <h1 className="mt-8 font-display text-6xl font-semibold leading-none text-paper lg:text-7xl">
               Building
               <br />
 
-              <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-violet-500 bg-clip-text text-transparent">
+              <span className="text-brass">
                 Digital
               </span>
 
@@ -66,12 +65,12 @@ const Hero = () => {
               ]}
               speed={50}
               repeat={Infinity}
-              className="mt-8 block text-2xl font-semibold text-blue-400"
+              className="mt-8 block font-mono-ledger text-xl text-brass"
             />
 
             {/* Description */}
 
-            <p className="mt-8 max-w-xl text-lg leading-8 text-slate-400">
+            <p className="mt-8 max-w-xl text-lg leading-8 text-paper-muted">
               I build fast, responsive and modern web applications using React,
               Tailwind CSS, JavaScript and Java, focusing on clean design and
               great user experiences.
@@ -81,21 +80,20 @@ const Hero = () => {
 
             <div className="mt-10 flex flex-wrap gap-5">
               <a
-               href="#projects"
-                className="mt-10 flex flex-wrap gap-5 rounded-full border border-white/10 bg-white/5 px-6 py-3 font-semibold transition duration-300 hover:border-blue-400 hover:bg-white/10"
-                     >
-              View Projects
-                 </a>
+                href="#projects"
+                className="rounded-sm bg-brass px-6 py-3 font-semibold text-ink transition duration-300 hover:bg-brass-deep"
+              >
+                View Projects
+              </a>
 
-             <a
-
-                 href="/resume.pdf"
+              <a
+                href="/resume.pdf"
                 target="_blank"
-                 rel="noopener noreferrer"
-                 download
-                 className="mt-10 flex flex-wrap gap-5 rounded-full border border-white/10 bg-white/5 px-6 py-3 font-semibold transition duration-300 hover:border-blue-400 hover:bg-white/10"
-                      >
-                      Download Resume
+                rel="noopener noreferrer"
+                download
+                className="rounded-sm border border-ink-line px-6 py-3 font-semibold text-paper transition duration-300 hover:border-brass hover:text-brass"
+              >
+                Download Resume
               </a>
             </div>
 
@@ -163,8 +161,8 @@ const Hero = () => {
         }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
-        <div className="flex flex-col items-center gap-3 text-slate-400">
-          <span className="text-sm tracking-widest uppercase">
+        <div className="flex flex-col items-center gap-3 text-paper-muted">
+          <span className="font-mono-ledger text-sm tracking-widest uppercase">
             Scroll
           </span>
 

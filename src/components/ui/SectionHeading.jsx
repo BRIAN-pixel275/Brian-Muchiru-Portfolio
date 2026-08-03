@@ -6,15 +6,15 @@ const SectionHeading = ({
   return (
     <div className="mb-16">
 
-      <span className="rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-sm font-medium text-blue-400">
+      <span className="inline-block border-b-2 border-brass pb-2 font-mono-ledger text-xs uppercase tracking-[3px] text-brass">
         {badge}
       </span>
 
-      <h2 className="mt-6 text-4xl font-bold md:text-5xl">
+      <h2 className="mt-6 font-display text-4xl font-semibold md:text-5xl">
         {title}
       </h2>
 
-      <p className="mt-4 max-w-2xl text-slate-400">
+      <p className="mt-4 max-w-2xl text-paper-muted">
         {subtitle}
       </p>
 

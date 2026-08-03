@@ -54,7 +54,7 @@ const Contact = () => {
               required
               value={formData.name}
               onChange={handleChange}
-              className="w-full rounded-xl border border-white/10 bg-white/5 p-4 outline-none transition focus:border-blue-500"
+              className="w-full rounded-sm border border-ink-line bg-ink p-4 text-paper outline-none transition focus:border-brass"
             />
 
             <input
@@ -64,7 +64,7 @@ const Contact = () => {
               required
               value={formData.email}
               onChange={handleChange}
-              className="w-full rounded-xl border border-white/10 bg-white/5 p-4 outline-none transition focus:border-blue-500"
+              className="w-full rounded-sm border border-ink-line bg-ink p-4 text-paper outline-none transition focus:border-brass"
             />
 
             <textarea
@@ -74,24 +74,24 @@ const Contact = () => {
               required
               value={formData.message}
               onChange={handleChange}
-              className="w-full rounded-xl border border-white/10 bg-white/5 p-4 outline-none transition focus:border-blue-500"
+              className="w-full rounded-sm border border-ink-line bg-ink p-4 text-paper outline-none transition focus:border-brass"
             />
 
             <button
               type="submit"
               disabled={status === "sending"}
-              className="rounded-full bg-gradient-to-r from-blue-500 to-violet-500 px-8 py-4 font-semibold disabled:opacity-60"
+              className="rounded-sm bg-brass px-8 py-4 font-semibold text-ink transition hover:bg-brass-deep disabled:opacity-60"
             >
               {status === "sending" ? "Sending..." : "Send Message"}
             </button>
 
             {status === "success" && (
-              <p className="text-sm text-green-400">
+              <p className="font-mono-ledger text-sm text-moss">
                 Thanks! Your message has been sent — I'll get back to you soon.
               </p>
             )}
             {status === "error" && (
-              <p className="text-sm text-red-400">
+              <p className="font-mono-ledger text-sm text-red-400">
                 Something went wrong. Please try again or email me directly.
               </p>
             )}

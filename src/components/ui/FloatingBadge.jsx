@@ -10,7 +10,7 @@ const FloatingBadge = ({ title, className }) => {
         duration: 3,
         repeat: Infinity,
       }}
-      className={`absolute rounded-full border border-white/10 bg-white/10 px-5 py-3 backdrop-blur-2xl ${className}`}
+      className={`absolute rounded-sm border border-ink-line bg-ink-raised px-5 py-3 font-mono-ledger text-sm text-paper ${className}`}
     >
       {title}
     </motion.div>
