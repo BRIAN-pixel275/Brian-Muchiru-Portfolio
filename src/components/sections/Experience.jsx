@@ -20,7 +20,7 @@ const Experience = () => {
 
         <div className="mx-auto max-w-4xl">
           {experience.map((item, index) => (
-            <TimelineCard
+            <TimeLineCard
               key={item.year}
               item={item}
               isLast={index === experience.length - 1}
