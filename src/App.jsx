@@ -35,7 +35,6 @@ function App() {
     <AnimatePresence>
       {loading && <LoadingScreen />}
       </AnimatePresence>
-      <CustomCursor/>
       <Background />
       <Navbar />
       <ScrollProgress />
